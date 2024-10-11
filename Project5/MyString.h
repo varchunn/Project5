@@ -34,5 +34,9 @@ public:
 	char operator[] (int index);
 	void operator() ();
 
+        MyString operator+(char c);       
+        friend MyString operator+(char c, const MyString& obj); 
+        MyString operator+(int num);       
+        friend MyString operator+(int num, const MyString& obj); 
 	~MyString();
 };
