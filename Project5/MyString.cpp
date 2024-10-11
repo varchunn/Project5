@@ -207,6 +207,56 @@ void MyString::operator()()
     cout << str << endl;
 }
 
+MyString MyString::operator+(char c) 
+{
+    char* newStr = new char[length + 2]; 
+    strcpy_s(newStr, length + 1, str);  
+    newStr[length] = c;                  
+    newStr[length + 1] = '\0';          
+    MyString temp(newStr);
+    delete[] newStr;
+    return temp;
+}
+
+
+MyString operator+(char c, const MyString& obj)
+{
+    char* newStr = new char[obj.length + 2]; 
+    newStr[0] = c;                           
+    strcpy_s(newStr + 1, obj.length + 1, obj.str); 
+    MyString temp(newStr);
+    delete[] newStr;
+    return temp;
+}
+
+
+MyString MyString::operator+(int num) 
+{
+    if (num <= 0) return *this; // Нічого не додаємо, якщо число <= 0
+    char* newStr = new char[length + num + 1]; 
+    strcpy_s(newStr, length + 1, str);         
+    for (int i = 0; i < num; ++i) {
+        newStr[length + i] = ' ';              
+    }
+    newStr[length + num] = '\0';               
+    MyString temp(newStr);
+    delete[] newStr;
+    return temp;
+}
+
+MyString operator+(int num, const MyString& obj)
+{
+    if (num <= 0) return obj; // Нічого не додаємо, якщо число <= 0
+    char* newStr = new char[obj.length + num + 1]; 
+    strcpy_s(newStr, obj.length + 1, obj.str);     
+    for (int i = 0; i < num; ++i) {
+        newStr[obj.length + i] = ' ';              
+    }
+    newStr[obj.length + num] = '\0';               
+    MyString temp(newStr);
+    delete[] newStr;
+    return temp;
+}
 MyString::~MyString()
 {
     delete[]str;
