@@ -9,6 +9,7 @@ ostream& operator<<(ostream& os, MyString& str)
 	}
 	return os;
 }
+
 istream& operator>>(istream& is, MyString& str)
 {
 	for (int i = 0; i < str.length; i++)
