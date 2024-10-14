@@ -21,25 +21,20 @@ istream& operator>>(istream& is, MyString& str)
     return is;
 }
 
-int main()
+int main() 
 {
     MyString str1("I love world");
     MyString str2("I love you");
+
     MyString str3 = str1;
+
     MyString str4;
     str4.Input();
-    
+
     cout << "str1: " << str1 << endl;
     cout << "str2: " << str2 << endl;
     cout << "str3: " << str3 << endl;
     cout << "str4: " << str4 << endl;
-
-    MyString str5{ 'I', 'L', 'U' };
-    str5.Output();
-
-    MyString str6 = move(str5);
-    cout << "str6 після move: " << str6 << endl;
-    cout << "str5 після move: " << str5 << endl; 
 
     MyString str7 = str6 + '!';
     cout << "str7 (str6 + '!'): " << str7 << endl;
