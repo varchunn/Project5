@@ -21,7 +21,10 @@ public:
     MyString(const char* str);
     MyString(const MyString& str);
     MyString(MyString& obj);
-    MyString(initializer_list<char> obj);
+    MyString(const char* obj);
+    MyString(const char* chars); 
+    MyString(MyString&& obj); 
+    MyString& operator=(MyString&& obj);
 
     ~MyString();
 
