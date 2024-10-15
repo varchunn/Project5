@@ -48,5 +48,15 @@ int main()
     MyString str10 = 10 + str6;
     cout << "str10 (10 + str6): " << str10 << endl;
 
+    MyString obj{'H', 'e', 'l', 'l', 'o'};
+    obj.Output(); 
+    
+    MyString obj2 = move(obj);
+    obj2.Output(); 
+    
+    MyString obj3;
+    obj3 = move(obj2);
+    obj3.Output();
+    
     return 0;
 }
