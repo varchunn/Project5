@@ -246,3 +246,42 @@ MyString::~MyString()
     length = 0;
     count--;
 }
+
+MyString::MyString(const char* chars) 
+{
+    length = chars.size();
+    str = new char[length + 1];
+    int i = 0;
+    for (auto ch : chars) 
+    {
+        str[i++] = ch;
+    }
+    str[length] = '\0';
+    count++;
+}
+
+MyString::MyString(MyString&& obj) 
+{
+    str = obj.str;
+    length = obj.length;
+    obj.str = nullptr;
+    obj.length = 0;
+    cout << "Move constructor called" << endl;
+}
+
+MyString& MyString::operator=(MyString&& obj) 
+{
+    if (this != &obj) 
+    {
+        if (str != nullptr) 
+        {
+            delete[] str;
+        }
+        str = obj.str;
+        length = obj.length;
+        obj.str = nullptr;
+        obj.length = 0;
+    }
+    cout << "Move assignment operator called" << endl;
+    return *this;
+}
